@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SmartServiceService WSDL service -->
+
+  <service name="SmartService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws.uniajc.com"/>
+      <parameter name="wsdlServiceElement" value="SmartServiceService"/>
+      <parameter name="schemaQualified" value="http://model.uniajc.com,http://ws.uniajc.com"/>
+      <parameter name="wsdlServicePort" value="SmartService"/>
+      <parameter name="className" value="com.uniajc.ws.SmartService"/>
+      <parameter name="wsdlPortType" value="SmartService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://ws.uniajc.com" xmlns:retNS="http://ws.uniajc.com" xmlns:rtns="http://model.uniajc.com" name="getPersonData" qname="operNS:getPersonData" returnQName="retNS:getPersonDataReturn" returnType="rtns:Person" soapAction="">
+        <parameter xmlns:pns="http://ws.uniajc.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <operation xmlns:operNS="http://ws.uniajc.com" xmlns:retNS="http://ws.uniajc.com" xmlns:rtns="http://model.uniajc.com" name="getTeacherStatus" qname="operNS:getTeacherStatus" returnQName="retNS:getTeacherStatusReturn" returnType="rtns:Teacher" soapAction="">
+        <parameter xmlns:pns="http://ws.uniajc.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="getPersonData getTeacherStatus"/>
+
+      <typeMapping xmlns:ns="http://model.uniajc.com" qname="ns:Teacher" type="java:com.uniajc.model.Teacher" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model.uniajc.com" qname="ns:Person" type="java:com.uniajc.model.Person" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
