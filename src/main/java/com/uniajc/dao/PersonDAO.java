@@ -7,17 +7,31 @@ import com.uniajc.model.Person;
 
 public class PersonDAO {
 
-	public Person getPersonData(int id) {
-		Person person = new Person();
+	public Person getPersonData(String id) {
 		ConnectionDB conn = new ConnectionDB();
 		try {
 			conn.connect();
-			ResultSet rs = conn.query("SELECT * FROM PERSONANATURALGENERAL WHERE PEGE_ID = "+id);
+			ResultSet rs = conn.query("SELECT PG.PEGE_ID, PG.PEGE_DOCUMENTOIDENTIDAD,"
+					+ "PN.PENG_PRIMERNOMBRE, PN.PENG_SEGUNDONOMBRE, PN.PENG_PRIMERAPELLIDO,"
+					+ "PN.PENG_SEGUNDOAPELLIDO, PG.PEGE_DIRECCION, PG.PEGE_MAIL, PG.PEGE_TELEFONO,"
+					+ "PG.PEGE_TELEFONOCELULAR, PN.PENG_FECHANACIMIENTO, EC.ESCG_DESCRIPCION,"
+					+ "PN.PENG_SEXO, PN.PENG_RH, C.CIGE_NOMBRE "
+					+ "FROM PERSONAGENERAL PG, PERSONANATURALGENERAL PN, ESTADOCIVILGENERAL EC,"
+					+ "CIUDADGENERAL C "
+					+ "WHERE PG.PEGE_DOCUMENTOIDENTIDAD = '"+id +"' AND PG.PEGE_ID = PN.PEGE_ID "
+					+ "AND PN.ESCG_ID = EC.ESCG_ID AND PG.CIGE_IDRESIDENCIA = C.CIGE_ID");
 			if(rs.next()){
-				person.setId(rs.getString("PEGE_ID"));
-				person.setName(rs.getString("PENG_PRIMERAPELLIDO"));
+				return new Person(rs.getInt("PEGE_ID"),
+						rs.getString("PEGE_DOCUMENTOIDENTIDAD"),
+						rs.getString("PENG_PRIMERNOMBRE") + " " + rs.getString("PENG_SEGUNDONOMBRE") + " " +
+						rs.getString("PENG_PRIMERAPELLIDO") + " " + rs.getString("PENG_SEGUNDOAPELLIDO"),
+						rs.getString("PEGE_DIRECCION"), rs.getString("PEGE_MAIL"),
+						rs.getString("PEGE_TELEFONO"), rs.getString("PEGE_TELEFONOCELULAR"),
+						rs.getString("PENG_FECHANACIMIENTO"), rs.getString("ESCG_DESCRIPCION"),
+						rs.getString("PENG_SEXO"), rs.getString("PENG_RH"), rs.getString("CIGE_NOMBRE"));
+			} else {
+				return null;
 			}
-			return person;
 		}catch(Exception e){
 			e.printStackTrace();
 			conn.disconnect();

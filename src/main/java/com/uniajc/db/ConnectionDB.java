@@ -88,7 +88,8 @@ public class ConnectionDB {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			this.connection = DriverManager.getConnection(url, this.username, this.password);
-		} catch(SQLException | ClassNotFoundException ex) {
+		} catch(Exception ex) {
+			ex.printStackTrace();
 			this.connection = null;
 		}
 	}

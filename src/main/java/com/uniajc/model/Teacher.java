@@ -1,13 +1,28 @@
 package com.uniajc.model;
 
+import java.util.ArrayList;
+
 public class Teacher {
 	
 	private Person person;
-	private String status;
+	private boolean activeContract;
 	private String initDate;
 	private String endDate;
+	private String vinculationType;
+	private ArrayList<Title> titles;
 	
 	public Teacher() {}
+
+	public Teacher(Person person, boolean activeContract, String initDate, String endDate, String vinculationType,
+			ArrayList<Title> titles) {
+		super();
+		this.person = person;
+		this.activeContract = activeContract;
+		this.initDate = initDate;
+		this.endDate = endDate;
+		this.vinculationType = vinculationType;
+		this.titles = titles;
+	}
 
 	public Person getPerson() {
 		return person;
@@ -17,12 +32,12 @@ public class Teacher {
 		this.person = person;
 	}
 
-	public String getStatus() {
-		return status;
+	public boolean getActiveContract() {
+		return activeContract;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setActiveContract(boolean activeContract) {
+		this.activeContract = activeContract;
 	}
 
 	public String getInitDate() {
@@ -41,4 +56,19 @@ public class Teacher {
 		this.endDate = endDate;
 	}
 
+	public String getVinculationType() {
+		return vinculationType;
+	}
+
+	public void setVinculationType(String vinculationType) {
+		this.vinculationType = vinculationType;
+	}
+
+	public ArrayList<Title> getTitles() {
+		return titles;
+	}
+
+	public void setTitles(ArrayList<Title> titles) {
+		this.titles = titles;
+	}
 }

@@ -1,18 +1,20 @@
 package com.uniajc.ws;
 
-import com.uniajc.model.Person;
-import com.uniajc.model.Teacher;
 import com.uniajc.service.PersonServiceImpl;
 import com.uniajc.service.TeacherServiceImpl;
+import com.uniajc.utils.Utils;
 
 public class SmartService {
 	
-	public Person getPersonData(int id) {
-		return new PersonServiceImpl().getPerson(id);
+	public String getPersonData(String id) {
+		return new Utils().objectToJSONResponse(new PersonServiceImpl().getPerson(id));
 	}
 	
-	public Teacher getTeacherStatus(int id) {
-		return new TeacherServiceImpl().getTeacherStatus(id);
+	public String getTeacherStatus(String id) {
+		return new Utils().objectToJSONResponse(new TeacherServiceImpl().getTeacher(id, false));
 	}
 	
+	public String getTeacherTitles(String id) {
+		return new Utils().objectToJSONResponse(new TeacherServiceImpl().getTeacher(id, true));
+	}
 }

@@ -15,34 +15,21 @@
   <service name="SmartService" provider="java:RPC" style="wrapped" use="literal">
       <parameter name="wsdlTargetNamespace" value="http://ws.uniajc.com"/>
       <parameter name="wsdlServiceElement" value="SmartServiceService"/>
-      <parameter name="schemaQualified" value="http://model.uniajc.com,http://ws.uniajc.com"/>
+      <parameter name="schemaQualified" value="http://ws.uniajc.com"/>
       <parameter name="wsdlServicePort" value="SmartService"/>
       <parameter name="className" value="com.uniajc.ws.SmartServiceSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="SmartService"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="getPersonData" qname="operNS:getPersonData" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getPersonDataReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:Person" xmlns:rtns="http://model.uniajc.com" soapAction="" >
-        <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      <operation name="getPersonData" qname="operNS:getPersonData" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getPersonDataReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <operation name="getTeacherStatus" qname="operNS:getTeacherStatus" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getTeacherStatusReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:Teacher" xmlns:rtns="http://model.uniajc.com" soapAction="" >
-        <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      <operation name="getTeacherStatus" qname="operNS:getTeacherStatus" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getTeacherStatusReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="getPersonData getTeacherStatus"/>
+      <operation name="getTeacherTitles" qname="operNS:getTeacherTitles" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getTeacherTitlesReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getTeacherTitles getPersonData getTeacherStatus"/>
 
-      <typeMapping
-        xmlns:ns="http://model.uniajc.com"
-        qname="ns:Teacher"
-        type="java:com.uniajc.model.Teacher"
-        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
-        encodingStyle=""
-      />
-      <typeMapping
-        xmlns:ns="http://model.uniajc.com"
-        qname="ns:Person"
-        type="java:com.uniajc.model.Person"
-        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
-        encodingStyle=""
-      />
   </service>
 </deployment>
