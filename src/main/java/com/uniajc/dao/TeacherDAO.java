@@ -2,16 +2,20 @@ package com.uniajc.dao;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
 
 import com.uniajc.db.ConnectionDB;
 import com.uniajc.model.Person;
 import com.uniajc.model.Teacher;
 import com.uniajc.model.Title;
+import com.uniajc.utils.LoggerUtil;
 
 public class TeacherDAO {
 	
+	private LoggerUtil logger = LoggerUtil.getInstance();
+	private ConnectionDB conn = new ConnectionDB();
+	
 	public Teacher getTeacher(Person p, boolean includeStatus) {
-		ConnectionDB conn = new ConnectionDB();
 		try {
 			conn.connect();
 			ResultSet rs = conn.query("SELECT T.TRAB_ACTIVO,TL.TRLA_FECHAINICIAL,TL.TRLA_FECHAFINAL, "
@@ -19,10 +23,8 @@ public class TeacherDAO {
 					+ "TL.LABO_ID = (SELECT L.LABO_ID FROM LABOR L WHERE L.LABO_ID = TL.LABO_ID "
 					+ "AND L.LABO_DOCENTE = 1) AND TL.PEGE_ID = T.PEGE_ID");
 			if(rs.next()){
-				Teacher teacher = new Teacher(p, rs.getInt("TRAB_ACTIVO") != 0, rs.getString("TRLA_FECHAINICIAL"),
-						rs.getString("TRLA_FECHAFINAL"), rs.getString("TIVD_ID"), includeStatus ? getTeacherTitles(p, conn) : null);
-				
-				return teacher;
+				return new Teacher(p, rs.getInt("TRAB_ACTIVO") != 0, rs.getString("TRLA_FECHAINICIAL"),
+						rs.getString("TRLA_FECHAFINAL"), rs.getString("TIVD_ID"), includeStatus ? getTeacherTitles(p) : null);
 			} else {
 				return null;
 			}
@@ -32,9 +34,10 @@ public class TeacherDAO {
 		}		
 	}
 	
-	private ArrayList<Title> getTeacherTitles(Person person, ConnectionDB conn) {
-		ArrayList<Title> titles= new ArrayList<Title>();
+	private ArrayList<Title> getTeacherTitles(Person person) {
+		ArrayList<Title> titles= new ArrayList<>();
 		try {
+			conn.connect();
 			ResultSet rs = conn.query("SELECT TG.TITU_DESCRIPCIONFEMENINA, TG.TITU_DESCRIPCIONMASCULINA,"
 					+ "TPNG.TIPN_ESTABLECIMIENTO, TPNG.TIPN_FECHAOBTENCION "
 					+ "FROM TITULOPERSONANATURALGENERAL TPNG, TITULOGENERAL TG "
@@ -46,8 +49,9 @@ public class TeacherDAO {
 			}
 			return titles;
 		}catch(Exception e){
+			logger.log(Level.SEVERE, "Exception occur", e);
 			conn.disconnect();
-			return null;
+			return new ArrayList<>();
 		}
 	}
 }

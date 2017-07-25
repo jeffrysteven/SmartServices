@@ -19,7 +19,6 @@ public class Person {
 
 	public Person(int id, String idNumber, String fullName, String address, String mail, String phoneNumber,
 			String cellphoneNumber, String birthDate, String maritalStatus, String genre, String rh, String city) {
-		super();
 		this.id = id;
 		this.idNumber = idNumber;
 		this.fullName = fullName;

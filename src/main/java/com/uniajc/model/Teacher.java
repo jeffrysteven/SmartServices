@@ -1,6 +1,6 @@
 package com.uniajc.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Teacher {
 	
@@ -9,12 +9,12 @@ public class Teacher {
 	private String initDate;
 	private String endDate;
 	private String vinculationType;
-	private ArrayList<Title> titles;
+	private List<Title> titles;
 	
 	public Teacher() {}
 
 	public Teacher(Person person, boolean activeContract, String initDate, String endDate, String vinculationType,
-			ArrayList<Title> titles) {
+			List<Title> titles) {
 		super();
 		this.person = person;
 		this.activeContract = activeContract;
@@ -64,11 +64,11 @@ public class Teacher {
 		this.vinculationType = vinculationType;
 	}
 
-	public ArrayList<Title> getTitles() {
+	public List<Title> getTitles() {
 		return titles;
 	}
 
-	public void setTitles(ArrayList<Title> titles) {
+	public void setTitles(List<Title> titles) {
 		this.titles = titles;
 	}
 }

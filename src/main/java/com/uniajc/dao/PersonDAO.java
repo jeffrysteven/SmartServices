@@ -1,11 +1,15 @@
 package com.uniajc.dao;
 
 import java.sql.ResultSet;
+import java.util.logging.Level;
 
 import com.uniajc.db.ConnectionDB;
 import com.uniajc.model.Person;
+import com.uniajc.utils.LoggerUtil;
 
 public class PersonDAO {
+	
+	private LoggerUtil logger = LoggerUtil.getInstance();
 
 	public Person getPersonData(String id) {
 		ConnectionDB conn = new ConnectionDB();
@@ -33,7 +37,7 @@ public class PersonDAO {
 				return null;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.log(Level.SEVERE, "Exception occur", e);
 			conn.disconnect();
 			return null;
 		}

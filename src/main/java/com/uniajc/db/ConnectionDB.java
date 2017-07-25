@@ -1,10 +1,16 @@
 package com.uniajc.db;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
+import java.util.logging.Level;
+
+import com.uniajc.utils.LoggerUtil;
 
 public class ConnectionDB {
 	
@@ -15,13 +21,21 @@ public class ConnectionDB {
 	private String sid;
 	
 	private Connection connection;
+	private LoggerUtil logger = LoggerUtil.getInstance();
+	private Properties prop = new Properties();
+	private InputStream input = ConnectionDB.class.getClassLoader().getResourceAsStream("config.properties");
 
 	public ConnectionDB() {
-		this.hostname = "localhost";
-		this.port = "49161";
-		this.username = "system";
-		this.password = "oracle";
-		this.sid = "xe";
+		try {
+			prop.load(input);
+			this.hostname = prop.getProperty("hostname");
+			this.port = prop.getProperty("port");
+			this.username = prop.getProperty("username");
+			this.password = prop.getProperty("password");
+			this.sid = prop.getProperty("sid");
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "Exception occur", e);
+		}
 	}
 
 	public ConnectionDB(String hostname, String port, String username, String password, Connection connection, String sid) {
@@ -88,8 +102,8 @@ public class ConnectionDB {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			this.connection = DriverManager.getConnection(url, this.username, this.password);
-		} catch(Exception ex) {
-			ex.printStackTrace();
+		} catch(Exception e) {
+			logger.log(Level.SEVERE, "Connect DB exception", e);
 			this.connection = null;
 		}
 	}
@@ -107,6 +121,7 @@ public class ConnectionDB {
 		try {
 			return this.connection != null && !this.connection.isClosed();
 		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "SQL Exception", e);
 			return false;
 		}
 	}
@@ -116,6 +131,7 @@ public class ConnectionDB {
 		try {
 			this.connection.close();
 		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "Connect DB exception", e);
 			this.connection = null;
 		}
 		this.connection = null;
