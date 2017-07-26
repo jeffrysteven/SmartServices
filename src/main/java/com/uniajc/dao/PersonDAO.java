@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 
 import com.uniajc.db.ConnectionDB;
+import com.uniajc.model.ContactData;
 import com.uniajc.model.Person;
 import com.uniajc.utils.LoggerUtil;
 
@@ -25,14 +26,12 @@ public class PersonDAO {
 					+ "WHERE PG.PEGE_DOCUMENTOIDENTIDAD = '"+id +"' AND PG.PEGE_ID = PN.PEGE_ID "
 					+ "AND PN.ESCG_ID = EC.ESCG_ID AND PG.CIGE_IDRESIDENCIA = C.CIGE_ID");
 			if(rs.next()){
-				return new Person(rs.getInt("PEGE_ID"),
-						rs.getString("PEGE_DOCUMENTOIDENTIDAD"),
+				return new Person(rs.getInt("PEGE_ID"), rs.getString("PEGE_DOCUMENTOIDENTIDAD"),
 						rs.getString("PENG_PRIMERNOMBRE") + " " + rs.getString("PENG_SEGUNDONOMBRE") + " " +
 						rs.getString("PENG_PRIMERAPELLIDO") + " " + rs.getString("PENG_SEGUNDOAPELLIDO"),
-						rs.getString("PEGE_DIRECCION"), rs.getString("PEGE_MAIL"),
-						rs.getString("PEGE_TELEFONO"), rs.getString("PEGE_TELEFONOCELULAR"),
-						rs.getString("PENG_FECHANACIMIENTO"), rs.getString("ESCG_DESCRIPCION"),
-						rs.getString("PENG_SEXO"), rs.getString("PENG_RH"), rs.getString("CIGE_NOMBRE"));
+						rs.getString("PENG_FECHANACIMIENTO"), rs.getString("PENG_SEXO"), 
+						rs.getString("PENG_RH"), new ContactData(rs.getString("PEGE_DIRECCION"), rs.getString("PEGE_MAIL"),
+						rs.getString("PEGE_TELEFONO"), rs.getString("PEGE_TELEFONOCELULAR"), rs.getString("CIGE_NOMBRE")));
 			} else {
 				return null;
 			}

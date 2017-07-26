@@ -30,8 +30,8 @@ public class ConnectionDB {
 			prop.load(input);
 			this.hostname = prop.getProperty("hostname");
 			this.port = prop.getProperty("port");
-			this.username = prop.getProperty("username");
-			this.password = prop.getProperty("password");
+			this.username = prop.getProperty("dbuser");
+			this.password = prop.getProperty("dbpassword");
 			this.sid = prop.getProperty("sid");
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, "Exception occur", e);

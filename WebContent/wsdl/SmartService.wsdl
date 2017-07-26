@@ -4,20 +4,6 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://ws.uniajc.com" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="getTeacherTitles">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getTeacherTitlesResponse">
-    <complexType>
-     <sequence>
-      <element name="getTeacherTitlesReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
    <element name="getTeacherStatus">
     <complexType>
      <sequence>
@@ -29,6 +15,20 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="getTeacherStatusReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTeacherTitles">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getTeacherTitlesResponse">
+    <complexType>
+     <sequence>
+      <element name="getTeacherTitlesReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -65,17 +65,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getTeacherTitlesRequest">
+   <wsdl:message name="getTeacherStatusResponse">
 
-      <wsdl:part element="impl:getTeacherTitles" name="parameters">
+      <wsdl:part element="impl:getTeacherStatusResponse" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="getTeacherStatusResponse">
+   <wsdl:message name="getTeacherTitlesRequest">
 
-      <wsdl:part element="impl:getTeacherStatusResponse" name="parameters">
+      <wsdl:part element="impl:getTeacherTitles" name="parameters">
 
       </wsdl:part>
 
@@ -99,18 +99,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    <wsdl:portType name="SmartService">
 
-      <wsdl:operation name="getTeacherTitles">
-
-         <wsdl:input message="impl:getTeacherTitlesRequest" name="getTeacherTitlesRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getTeacherTitlesResponse" name="getTeacherTitlesResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="getTeacherStatus">
 
          <wsdl:input message="impl:getTeacherStatusRequest" name="getTeacherStatusRequest">
@@ -118,6 +106,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:getTeacherStatusResponse" name="getTeacherStatusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTeacherTitles">
+
+         <wsdl:input message="impl:getTeacherTitlesRequest" name="getTeacherTitlesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getTeacherTitlesResponse" name="getTeacherTitlesResponse">
 
        </wsdl:output>
 
@@ -141,24 +141,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 
-      <wsdl:operation name="getTeacherTitles">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getTeacherTitlesRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getTeacherTitlesResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="getTeacherStatus">
 
          <wsdlsoap:operation soapAction=""/>
@@ -170,6 +152,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getTeacherStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getTeacherTitles">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getTeacherTitlesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getTeacherTitlesResponse">
 
             <wsdlsoap:body use="literal"/>
 
