@@ -10,11 +10,29 @@ import com.uniajc.model.Teacher;
 import com.uniajc.model.Title;
 import com.uniajc.utils.LoggerUtil;
 
+/**
+ * @author jlenis
+ *
+ */
 public class TeacherDAO {
 	
+	
+	/**
+	 * Logger Helper.
+	 */
 	private LoggerUtil logger = LoggerUtil.getInstance();
+	
+	/**
+	 * Connection to DB.
+	 */
 	private ConnectionDB conn = new ConnectionDB();
 	
+	
+	/**
+	 * @param {Person} p - Teacher associated person. 
+	 * @param {boolean} includeStatus - flag to include contract status
+	 * @return {Teacher} - Teacher object.
+	 */
 	public Teacher getTeacher(Person p, boolean includeStatus) {
 		try {
 			conn.connect();
@@ -34,6 +52,10 @@ public class TeacherDAO {
 		}		
 	}
 	
+	/**
+	 * @param {Person} p - Teacher associated person.
+	 * @return {ArrayList<Title>} - Teacher titles.
+	 */
 	private ArrayList<Title> getTeacherTitles(Person person) {
 		ArrayList<Title> titles= new ArrayList<>();
 		try {

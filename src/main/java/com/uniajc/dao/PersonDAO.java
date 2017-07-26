@@ -8,10 +8,23 @@ import com.uniajc.model.ContactData;
 import com.uniajc.model.Person;
 import com.uniajc.utils.LoggerUtil;
 
+/**
+ * @author Jeffry Lenis
+ *
+ */
 public class PersonDAO {
 	
+	/**
+	 * Logger helper class
+	 * 
+	 */
 	private LoggerUtil logger = LoggerUtil.getInstance();
-
+	
+	
+	/**
+	 * @param id - document number.
+	 * @return {Person} Person Object
+	 */
 	public Person getPersonData(String id) {
 		ConnectionDB conn = new ConnectionDB();
 		try {

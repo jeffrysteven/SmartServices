@@ -2,6 +2,10 @@ package com.uniajc.model;
 
 import java.util.List;
 
+/**
+ * @author jlenis
+ *
+ */
 public class Teacher {
 	
 	private Person person;

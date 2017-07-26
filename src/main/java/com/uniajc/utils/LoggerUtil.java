@@ -6,11 +6,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * @author jlenis
+ *
+ */
 public class LoggerUtil {
 	
+	/**
+	 * Class instance singleton.
+	 */
 	public static final LoggerUtil LOGGERINSTANCE = new LoggerUtil();
+	
+	/**
+	 * Init Logger.
+	 */
 	private final Logger loggerObj = Logger.getLogger("SmartServices");
 	
+	
+	/**
+	 * Init logger and settings.
+	 */
 	public LoggerUtil() {
 		try {
 			FileHandler fileHandler = new FileHandler("SmartServices.log");
@@ -23,10 +38,18 @@ public class LoggerUtil {
 		}
 	}
 	
+	/**
+	 * @return Class instance.
+	 */
 	public static LoggerUtil getInstance() {
 		return LOGGERINSTANCE;
 	}
 	
+	/**
+	 * @param {Level} - Level log.
+	 * @param logMsg - Message
+	 * @param thrown - Exception
+	 */
 	public void log(Level l, String logMsg, Throwable thrown) {
 		loggerObj.log(l, logMsg, thrown);
 	}

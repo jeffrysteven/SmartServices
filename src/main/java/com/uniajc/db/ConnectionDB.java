@@ -12,19 +12,60 @@ import java.util.logging.Level;
 
 import com.uniajc.utils.LoggerUtil;
 
+/**
+ * @author jlenis
+ *
+ */
 public class ConnectionDB {
 	
+	/**
+	 * DB Hostname.
+	 */
 	private String hostname;
+	
+	/**
+	 * DB port
+	 */
 	private String port;
+	
+	/**
+	 * DB username.
+	 */
 	private String username;
+	
+	/**
+	 * DB password.
+	 */
 	private String password;
+	
+	/**
+	 * DB sid.
+	 */
 	private String sid;
 	
+	/**
+	 * Connection to DB.
+	 */
 	private Connection connection;
+	
+	/**
+	 * Logger Helper.
+	 */
 	private LoggerUtil logger = LoggerUtil.getInstance();
+	
+	/**
+	 * Project properties.
+	 */
 	private Properties prop = new Properties();
+	
+	/**
+	 * Project properties loader.
+	 */
 	private InputStream input = ConnectionDB.class.getClassLoader().getResourceAsStream("config.properties");
 
+	/**
+	 * Sets object attributes to database values.
+	 */
 	public ConnectionDB() {
 		try {
 			prop.load(input);
@@ -36,16 +77,6 @@ public class ConnectionDB {
 		} catch (IOException e) {
 			logger.log(Level.SEVERE, "Exception occur", e);
 		}
-	}
-
-	public ConnectionDB(String hostname, String port, String username, String password, Connection connection, String sid) {
-		super();
-		this.hostname = hostname;
-		this.port = port;
-		this.username = username;
-		this.password = password;
-		this.connection = connection;
-		this.sid = sid;
 	}
 	
 	public String getHostname() {
@@ -95,9 +126,11 @@ public class ConnectionDB {
 	public void setSid(String sid) {
 		this.sid = sid;
 	}
-
+	
+	/**
+	 * Connect to DB.
+	 */
 	public void connect(){
-		
 		String url = "jdbc:oracle:thin:@"+this.hostname+":"+this.port+":xe";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -108,6 +141,12 @@ public class ConnectionDB {
 		}
 	}
 	
+	
+	/**
+	 * @param {String} query
+	 * @return {ResultSet} query result.
+	 * @throws SQLException
+	 */
 	public ResultSet query(String query) throws SQLException
 	{
 		if(!this.isConnected())
@@ -116,6 +155,10 @@ public class ConnectionDB {
 		return sm.executeQuery(query);
 	}
 	
+	
+	/**
+	 * @return {boolean} validation if connection is already open.
+	 */
 	public boolean isConnected()
 	{
 		try {
@@ -126,6 +169,9 @@ public class ConnectionDB {
 		}
 	}
 	
+	/**
+	 * Close DB Connection. 
+	 */
 	public void disconnect()
 	{
 		try {

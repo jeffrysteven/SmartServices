@@ -3,6 +3,10 @@ package com.uniajc.service;
 import com.uniajc.dao.PersonDAO;
 import com.uniajc.model.Person;
 
+/**
+ * @author jlenis
+ *
+ */
 public class PersonServiceImpl implements PersonInterface{
 
 	@Override

@@ -1,5 +1,9 @@
 package com.uniajc.model;
 
+/**
+ * @author jlenis
+ *
+ */
 public class Title {
 	
 	private String titleName;
