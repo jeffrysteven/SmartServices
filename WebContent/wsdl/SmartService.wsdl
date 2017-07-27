@@ -4,6 +4,20 @@
 Built on Apr 22, 2006 (06:55:48 PDT)-->
  <wsdl:types>
   <schema elementFormDefault="qualified" targetNamespace="http://ws.uniajc.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getPersonData">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getPersonDataResponse">
+    <complexType>
+     <sequence>
+      <element name="getPersonDataReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
    <element name="getTeacherStatus">
     <complexType>
      <sequence>
@@ -29,20 +43,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="getTeacherTitlesReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getPersonData">
-    <complexType>
-     <sequence>
-      <element name="id" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getPersonDataResponse">
-    <complexType>
-     <sequence>
-      <element name="getPersonDataReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -81,14 +81,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getTeacherStatusRequest">
-
-      <wsdl:part element="impl:getTeacherStatus" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
    <wsdl:message name="getPersonDataRequest">
 
       <wsdl:part element="impl:getPersonData" name="parameters">
@@ -97,7 +89,27 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
+   <wsdl:message name="getTeacherStatusRequest">
+
+      <wsdl:part element="impl:getTeacherStatus" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
    <wsdl:portType name="SmartService">
+
+      <wsdl:operation name="getPersonData">
+
+         <wsdl:input message="impl:getPersonDataRequest" name="getPersonDataRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPersonDataResponse" name="getPersonDataResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="getTeacherStatus">
 
@@ -123,23 +135,29 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getPersonData">
-
-         <wsdl:input message="impl:getPersonDataRequest" name="getPersonDataRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getPersonDataResponse" name="getPersonDataResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
    </wsdl:portType>
 
    <wsdl:binding name="SmartServiceSoapBinding" type="impl:SmartService">
 
       <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getPersonData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPersonDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPersonDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
 
       <wsdl:operation name="getTeacherStatus">
 
@@ -170,24 +188,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getTeacherTitlesResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="getPersonData">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getPersonDataRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getPersonDataResponse">
 
             <wsdlsoap:body use="literal"/>
 

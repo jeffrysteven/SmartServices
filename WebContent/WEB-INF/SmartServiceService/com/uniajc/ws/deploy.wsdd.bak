@@ -20,13 +20,13 @@
       <parameter name="className" value="com.uniajc.ws.SmartServiceSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="SmartService"/>
       <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getPersonData" qname="operNS:getPersonData" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getPersonDataReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
       <operation name="getTeacherStatus" qname="operNS:getTeacherStatus" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getTeacherStatusReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <operation name="getTeacherTitles" qname="operNS:getTeacherTitles" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getTeacherTitlesReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
-        <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
-      <operation name="getPersonData" qname="operNS:getPersonData" xmlns:operNS="http://ws.uniajc.com" returnQName="retNS:getPersonDataReturn" xmlns:retNS="http://ws.uniajc.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://ws.uniajc.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
       <parameter name="allowedMethods" value="getTeacherTitles getPersonData getTeacherStatus"/>

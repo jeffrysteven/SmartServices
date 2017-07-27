@@ -18,20 +18,16 @@ public class SmartServiceTest {
 
 	@Test
 	public void testGetPersonData() {
-		System.out.println(smWS.getPersonData("1143841308"));
 		assertNotEquals("null", smWS.getPersonData("1143841308"));
 	}
 
 	@Test
 	public void testGetTeacherStatus() {
 		assertNotEquals("null", smWS.getTeacherStatus("1143841308"));
-		System.out.println(smWS.getTeacherStatus("1143841308"));
 	}
 
 	@Test
 	public void testGetTeacherTitles() {
 		assertNotEquals("null", smWS.getTeacherTitles("1143841308"));
-		System.out.println(smWS.getTeacherTitles("1143841308"));
 	}
-
 }
