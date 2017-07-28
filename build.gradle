@@ -28,13 +28,12 @@ dependencies {
 }
 
 test {
+    filter {
+    		includeTestsMatching "*Test"
+    }
     testLogging {
         events 'started', 'passed'
     }
-}
-
-task testWS(type: Test, dependsOn: testClasses) {
-    include '**/*Test*'
 }
 
 tasks.withType(Javadoc) {
