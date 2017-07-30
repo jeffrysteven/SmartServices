@@ -130,14 +130,16 @@ public class ConnectionDB {
 	/**
 	 * Connect to DB.
 	 */
-	public void connect(){
+	public boolean connect(){
 		String url = "jdbc:oracle:thin:@"+this.hostname+":"+this.port+":xe";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			this.connection = DriverManager.getConnection(url, this.username, this.password);
+			return this.isConnected();
 		} catch(Exception e) {
 			logger.log(Level.SEVERE, "Connect DB exception", e);
 			this.connection = null;
+			return this.isConnected();
 		}
 	}
 	
