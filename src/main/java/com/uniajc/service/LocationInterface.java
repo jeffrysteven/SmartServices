@@ -6,7 +6,7 @@ package com.uniajc.service;
  */
 public interface LocationInterface {
 	/**
-	 * @param {String} address
+	 * @param address
 	 * @return {Long} - duration in seconds to UNIAJC.
 	 */
 	public Long getTravelDurationToUNIAJC(String address);

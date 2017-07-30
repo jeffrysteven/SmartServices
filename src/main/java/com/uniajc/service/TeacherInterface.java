@@ -8,8 +8,8 @@ import com.uniajc.model.Teacher;
  */
 public interface TeacherInterface {
 	/**
-	 * @param {String} - Person doc id
-	 * @param {Boolean} includeStatus - flag to include contract status.
+	 * @param id - Person doc id
+	 * @param includeStatus - flag to include contract status.
 	 * @return {Teacher} - Teacher data.
 	 */
 	public Teacher getTeacher(String id, boolean includeStatus);

@@ -46,7 +46,7 @@ public class LoggerUtil {
 	}
 	
 	/**
-	 * @param {Level} - Level log.
+	 * @param l - Level log.
 	 * @param logMsg - Message
 	 * @param thrown - Exception
 	 */

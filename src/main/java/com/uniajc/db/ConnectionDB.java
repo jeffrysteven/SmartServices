@@ -145,7 +145,7 @@ public class ConnectionDB {
 	
 	
 	/**
-	 * @param {String} query
+	 * @param query
 	 * @return {ResultSet} query result.
 	 * @throws SQLException
 	 */

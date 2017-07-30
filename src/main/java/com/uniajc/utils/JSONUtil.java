@@ -23,7 +23,7 @@ public class JSONUtil {
 	
 	
 	/**
-	 * @param {Object} o - transform any object to JSON. 
+	 * @param o - Object to transform to JSON. 
 	 * @return {String} Object JSON stringified.
 	 */
 	public String objectToJSONResponse(Object o) {

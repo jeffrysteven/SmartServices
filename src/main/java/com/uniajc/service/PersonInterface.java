@@ -8,7 +8,7 @@ import com.uniajc.model.Person;
  */
 public interface PersonInterface {
 	/**
-	 * @param {String} id
+	 * @param id - doc id
 	 * @return {Person} - person data
 	 */
 	public Person getPerson(String id);

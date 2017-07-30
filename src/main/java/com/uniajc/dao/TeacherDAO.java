@@ -29,8 +29,8 @@ public class TeacherDAO {
 	
 	
 	/**
-	 * @param {Person} p - Teacher associated person. 
-	 * @param {boolean} includeStatus - flag to include contract status
+	 * @param p - Teacher associated person. 
+	 * @param includeStatus - flag to include contract status
 	 * @return {Teacher} - Teacher object.
 	 */
 	public Teacher getTeacher(Person p, boolean includeStatus) {
@@ -53,7 +53,7 @@ public class TeacherDAO {
 	}
 	
 	/**
-	 * @param {Person} p - Teacher associated person.
+	 * @param p - Teacher associated person.
 	 * @return {ArrayList<Title>} - Teacher titles.
 	 */
 	private ArrayList<Title> getTeacherTitles(Person person) {
