@@ -22,7 +22,7 @@ public class LocationServiceImplTest {
 	public void setUp() throws Exception {
 		conn = new ConnectionDB();
 		pDao = new PersonDAO();
-		person = pDao.getPersonData("1143841309");
+		person = pDao.getPersonData("1143841308");
 	}
 
 	@Test
