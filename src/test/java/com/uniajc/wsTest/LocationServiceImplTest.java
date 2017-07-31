@@ -30,7 +30,7 @@ public class LocationServiceImplTest {
 		if(conn.connect()) {
 			if(person != null) {
 				assertTrue(new LocationServiceImpl().getTravelDurationToUNIAJC(
-						person.getContact().getAddress() + ", " + person.getContact().getCity()) > 0);
+						person.getContact().getAddress() + ", " + person.getContact().getCity()) != null);
 			} else {
 				fail("Person not found");
 			}

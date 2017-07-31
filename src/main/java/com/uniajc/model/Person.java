@@ -1,5 +1,7 @@
 package com.uniajc.model;
 
+import com.uniajc.service.LocationServiceImpl;
+
 /**
  * @author jlenis
  *
@@ -13,6 +15,7 @@ public class Person {
 	private String genre;
 	private String rh;
 	private ContactData contact;
+	private Location locationToUNIAJC;
 	
 	public Person() {}
 
@@ -24,6 +27,7 @@ public class Person {
 		this.genre = genre;
 		this.rh = rh;
 		this.contact = contact;
+		this.locationToUNIAJC = new LocationServiceImpl().getTravelDurationToUNIAJC(contact.getAddress() + ", " + contact.getCity());
 	}
 
 	public int getId() {
@@ -80,5 +84,13 @@ public class Person {
 
 	public void setContact(ContactData contact) {
 		this.contact = contact;
+	}
+
+	public Location getLocationToUNIAJC() {
+		return locationToUNIAJC;
+	}
+
+	public void setLocationToUNIAJC(Location locationToUNIAJC) {
+		this.locationToUNIAJC = locationToUNIAJC;
 	}
 }

@@ -1,7 +1,5 @@
 package com.uniajc.ws;
 
-import com.uniajc.model.Person;
-import com.uniajc.service.LocationServiceImpl;
 import com.uniajc.service.PersonServiceImpl;
 import com.uniajc.service.TeacherServiceImpl;
 import com.uniajc.utils.JSONUtil;
@@ -39,19 +37,5 @@ public class SmartService {
 	 */
 	public String getTeacherTitles(String id) {
 		return jsonUtil.objectToJSONResponse(new TeacherServiceImpl().getTeacher(id, true));
-	}
-	
-	/**
-	 * @param id - Person document id.
-	 * * @return {String} Person duration in seconds to UNIAJC.
-	 */
-	public Long getDurationToUNIAJC(String id) {
-		Person person = new PersonServiceImpl().getPerson(id);
-		if(person != null) {
-			return new LocationServiceImpl()
-					.getTravelDurationToUNIAJC(person.getContact().getAddress()+ ", " +person.getContact().getCity());
-		} else {
-			return Long.parseLong("0");
-		}
 	}
 }

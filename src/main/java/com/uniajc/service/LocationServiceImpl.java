@@ -10,6 +10,7 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.TravelMode;
 import com.uniajc.db.ConnectionDB;
+import com.uniajc.model.Location;
 import com.uniajc.utils.LoggerUtil;
 
 public class LocationServiceImpl implements LocationInterface{
@@ -47,16 +48,16 @@ public class LocationServiceImpl implements LocationInterface{
 	}
 
 	@Override
-	public Long getTravelDurationToUNIAJC(String address) {
+	public Location getTravelDurationToUNIAJC(String address) {
 		try {
 			GeoApiContext context = new GeoApiContext.Builder().apiKey(this.apiKey).build();
 			DistanceMatrix result = new DistanceMatrixApiRequest(context).
 					origins(address).destinations("Cl. 25 #127-220, Cali, Valle del Cauca, Colombia")
 					.mode(TravelMode.TRANSIT).await();
-			return result.rows[0].elements[0].duration.inSeconds;
+			return new Location(result.rows[0].elements[0].duration.inSeconds, result.rows[0].elements[0].distance.inMeters);
 		} catch(Exception e) {
 			logger.log(Level.SEVERE, "Maps location error", e);
-			return Long.parseLong("0");
+			return null;
 		}
 	}
 
