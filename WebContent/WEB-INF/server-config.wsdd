@@ -42,7 +42,11 @@
   <ns1:operation name="getTeacherTitles" qname="ns3:getTeacherTitles" returnQName="ns3:getTeacherTitlesReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://ws.uniajc.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
    <ns1:parameter qname="ns3:id" type="xsd:string"/>
   </ns1:operation>
-  <ns1:parameter name="allowedMethods" value="getTeacherTitles getPersonData getTeacherStatus"/>
+  <ns1:operation name="getLocationDataTOUNIAJC" qname="ns4:getLocationDataTOUNIAJC" returnQName="ns4:getLocationDataTOUNIAJCReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://ws.uniajc.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:jsonAddressesArray" type="xsd:string"/>
+   <ns1:parameter qname="ns4:place" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getTeacherTitles getLocationDataTOUNIAJC getPersonData getTeacherStatus"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="SmartService"/>
   <ns1:parameter name="className" value="com.uniajc.ws.SmartService"/>

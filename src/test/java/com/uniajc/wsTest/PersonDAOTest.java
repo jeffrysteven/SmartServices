@@ -28,7 +28,10 @@ public class PersonDAOTest {
 		if(conn.connect()) {
 			ContactData c = new ContactData("Carrera 1c 1 # 53 - 65", "jeffreyleji@gmail.com", "3864359", "3186908757", "Cali");
 			Person p = new Person(1, "1143841308", "Jeffry Steven Lenis Jimenez", "1992-02-07 00:00:00.0", "M", "O+", c);
-			assertEquals(jsonUtil.objectToJSONResponse(p), jsonUtil.objectToJSONResponse(pDao.getPersonData("1143841308")));
+			p.setLocationToUNIAJC(null);
+			Person dbPerson = pDao.getPersonData("1143841308");
+			dbPerson.setLocationToUNIAJC(null);
+			assertEquals(jsonUtil.objectToJSONResponse(p), jsonUtil.objectToJSONResponse(dbPerson));
 		} else {
 			fail("Database Connection failure");
 		}

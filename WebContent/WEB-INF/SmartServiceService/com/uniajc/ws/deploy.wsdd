@@ -19,7 +19,11 @@
       <operation xmlns:operNS="http://ws.uniajc.com" xmlns:retNS="http://ws.uniajc.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getTeacherTitles" qname="operNS:getTeacherTitles" returnQName="retNS:getTeacherTitlesReturn" returnType="rtns:string" soapAction="">
         <parameter xmlns:pns="http://ws.uniajc.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:string"/>
       </operation>
-      <parameter name="allowedMethods" value="getTeacherTitles getPersonData getTeacherStatus"/>
+      <operation xmlns:operNS="http://ws.uniajc.com" xmlns:retNS="http://ws.uniajc.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getLocationDataTOUNIAJC" qname="operNS:getLocationDataTOUNIAJC" returnQName="retNS:getLocationDataTOUNIAJCReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://ws.uniajc.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:jsonAddressesArray" type="tns:string"/>
+        <parameter xmlns:pns="http://ws.uniajc.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:place" type="tns:int"/>
+      </operation>
+      <parameter name="allowedMethods" value="getTeacherTitles getLocationDataTOUNIAJC getPersonData getTeacherStatus"/>
 
   </service>
 </deployment>

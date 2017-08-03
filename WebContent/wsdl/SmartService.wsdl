@@ -46,12 +46,35 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
      </sequence>
     </complexType>
    </element>
+   <element name="getLocationDataTOUNIAJC">
+    <complexType>
+     <sequence>
+      <element name="jsonAddressesArray" type="xsd:string"/>
+      <element name="place" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getLocationDataTOUNIAJCResponse">
+    <complexType>
+     <sequence>
+      <element name="getLocationDataTOUNIAJCReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
   </schema>
  </wsdl:types>
 
    <wsdl:message name="getPersonDataResponse">
 
       <wsdl:part element="impl:getPersonDataResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLocationDataTOUNIAJCRequest">
+
+      <wsdl:part element="impl:getLocationDataTOUNIAJC" name="parameters">
 
       </wsdl:part>
 
@@ -76,6 +99,14 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
    <wsdl:message name="getTeacherTitlesRequest">
 
       <wsdl:part element="impl:getTeacherTitles" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getLocationDataTOUNIAJCResponse">
+
+      <wsdl:part element="impl:getLocationDataTOUNIAJCResponse" name="parameters">
 
       </wsdl:part>
 
@@ -135,6 +166,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
+      <wsdl:operation name="getLocationDataTOUNIAJC">
+
+         <wsdl:input message="impl:getLocationDataTOUNIAJCRequest" name="getLocationDataTOUNIAJCRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getLocationDataTOUNIAJCResponse" name="getLocationDataTOUNIAJCResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
    </wsdl:portType>
 
    <wsdl:binding name="SmartServiceSoapBinding" type="impl:SmartService">
@@ -188,6 +231,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getTeacherTitlesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getLocationDataTOUNIAJC">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getLocationDataTOUNIAJCRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getLocationDataTOUNIAJCResponse">
 
             <wsdlsoap:body use="literal"/>
 

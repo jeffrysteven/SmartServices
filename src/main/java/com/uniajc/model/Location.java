@@ -2,28 +2,29 @@ package com.uniajc.model;
 
 public class Location {
 	
-	private Long tripDurationToUNIAJCInSeconds;
-	private Long tripDistanceToUNIAJCInMeters;
+	private Duration durationToUNIAJC;
+	private Distance distanceToUNIAJC;
 	
-	public Location(Long tripDurationToUNIAJCInSeconds, Long tripDistanceToUNIAJCInMeters) {
-		this.tripDurationToUNIAJCInSeconds = tripDurationToUNIAJCInSeconds;
-		this.tripDistanceToUNIAJCInMeters = tripDistanceToUNIAJCInMeters;
+	public Location(Duration durationToUNIAJC, Distance distanceToUNIAJC) {
+		super();
+		this.durationToUNIAJC = durationToUNIAJC;
+		this.distanceToUNIAJC = distanceToUNIAJC;
 	}
 
-	public Long getTripDurationToUNIAJCInSeconds() {
-		return tripDurationToUNIAJCInSeconds;
+	public Duration getDurationToUNIAJC() {
+		return durationToUNIAJC;
 	}
 
-	public void setTripDurationToUNIAJCInSeconds(Long tripDurationToUNIAJCInSeconds) {
-		this.tripDurationToUNIAJCInSeconds = tripDurationToUNIAJCInSeconds;
+	public void setDurationToUNIAJC(Duration durationToUNIAJC) {
+		this.durationToUNIAJC = durationToUNIAJC;
 	}
 
-	public Long getTripDistanceToUNIAJCInMeters() {
-		return tripDistanceToUNIAJCInMeters;
+	public Distance getDistanceToUNIAJC() {
+		return distanceToUNIAJC;
 	}
 
-	public void setTripDistanceToUNIAJCInMeters(Long tripDistanceToUNIAJCInMeters) {
-		this.tripDistanceToUNIAJCInMeters = tripDistanceToUNIAJCInMeters;
+	public void setDistanceToUNIAJC(Distance distanceToUNIAJC) {
+		this.distanceToUNIAJC = distanceToUNIAJC;
 	}
 	
 }

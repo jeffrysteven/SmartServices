@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.uniajc.dao.PersonDAO;
 import com.uniajc.db.ConnectionDB;
 import com.uniajc.model.Person;
@@ -37,6 +39,20 @@ public class LocationServiceImplTest {
 		} else {
 			fail("Database Connection failure");
 		}
+	}
+	
+	@Test
+	public void testGetTravelDurationToUNIAJCFromList() {
+		JsonArray addressesArr = new JsonArray();
+		JsonObject address = new JsonObject();
+		address.addProperty("address", "Carrera 1c 1 # 53 - 65");
+		address.addProperty("city", "Cali");
+		addressesArr.add(address);
+		address = new JsonObject();
+		address.addProperty("address", "Calle 13a #100-35");
+		address.addProperty("city", "Cali");
+		addressesArr.add(address);
+		assertTrue(new LocationServiceImpl().getTravelDurationToUNIAJCFromList(addressesArr, 1).size() > 0);
 	}
 
 }
